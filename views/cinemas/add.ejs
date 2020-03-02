@@ -1,0 +1,77 @@
+  <style type="text/css">
+      .force{
+        color: red;
+      }
+  </style>
+  <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-10 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <form action="add" method="post" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label>Tên</label><span class="force">*</span>
+                                                <input type="text" name="name" class="form-control" placeholder="Nhập tên">
+                                                <label>Mã</label><span class="force">*</span>
+                                                <input type="text" name="code" class="form-control" >
+                                                <label>Thời lượng</label><span class="force">*</span>
+                                                <input type="text" name="runtime" class="form-control" >
+                                                <label>Đạo diễn</label><span class="force">*</span>
+                                                <input type="text" name="director" class="form-control" >
+                                                <label>Diễn viên</label><span class="force">*</span>
+                                                <input type="text" name="cast" class="form-control" >
+                                                <label>Ngày công chiếu</label><span class="force">*</span>
+                                                <input type="text" id="openday" name="openday" class="form-control" >
+                                                <label>Thể loại</label><span class="force">*</span>
+                                                <select name="genre" class="form-control">
+                                                    <option value="0">Chọn thể loại</option>
+                                                    <option value="Hành động">Hành động</option>
+                                                    <option value="Hài">Hài</option>
+                                                    <option value="Tình cảm">Tình cảm</option>
+                                                    <option value="Kinh dị">Kinh dị</option>
+                                                </select>
+                                                 <label>Quốc gia</label><span class="force">*</span>
+                                                <select name="country" class="form-control">
+                                                    <option value="Việt Nam">Việt Nam</option>
+                                                    <option value="Trung Quốc">Trung Quốc</option>
+                                                    <option value="Mỹ">Mỹ</option>
+                                                    <option value="Anh">Anh</option>
+                                                    <option value="Nhật Bản">Nhật Bản</option>
+                                                </select>
+                                                <label>Hình ảnh</label><span class="force">*</span>
+                                                <input type="file" name="fposter" class="form-control" >
+                                                 <label>Tóm tắt</label><span class="force">*</span>
+                                                 <textarea class="form-control" name="trailer"id="trailer"></textarea>
+                    
+                                            </div>
+                                            <button class="btn btn-primary">Add</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Widgets -->
+            </div>
+            <!-- .animated -->
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+        });
+        $('#openday').datepicker({
+            showAnim: 'drop',
+            dateFormat: 'dd/mm/yy'
+        });
+        CKEDITOR.replace( 'trailer' );
+    </script>    
