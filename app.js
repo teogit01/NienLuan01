@@ -39,5 +39,5 @@ app.use('/cinemas',authMiddleware.requireAuth,cinemaRoutes);
 app.listen(port,function(){
 	console.log("Server Start port 3000")
 });
-hello
+
 export default app;
