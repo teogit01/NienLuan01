@@ -1,5 +1,5 @@
 function index(req,res){
-	res.render('index');
+	res.render('auth/login');
 }
 function index2(req,res){
 	res.render("test/index2");

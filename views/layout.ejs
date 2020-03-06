@@ -5,23 +5,28 @@
 	<%- include ('layouts/head') %>
 </head>
 <body>
-  
-   <%- include ('layouts/left') %>
 
-    <div id="right-panel" class="right-panel" style="background-color: white">
+  <div class="main">
+      <%- include ('layouts/left') %>
+
+      <div id="right-panel" class="right-panel" style="background-color: white">
   
-     <%- include ('layouts/header') %>
+     	  <%- include ('layouts/header') %>
   
-  
-     <%- body %>
+  	
+     	  <%- body %>
+
         
         <div class="clearfix"></div>
         
     		<%- include ('layouts/footer') %>
         
-    </div>
+
+      </div>
     
 
-    <%- include ('layouts/script') %>
+      <%- include ('layouts/script') %>
+	</div>
+
 </body>
 </html>
