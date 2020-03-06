@@ -1,11 +1,6 @@
 import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
 import bodyParser from 'body-parser';
-
-
-//import routes
-import indexRoutes from './routes/index';
-import cinemaRoutes from './routes/cinemaRoute';
 import cookieParser from 'cookie-parser';
 
 
@@ -21,7 +16,6 @@ const port = 3000;
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(expressLayouts);
 app.use(cookieParser());
 
 app.use(express.static('public'));
