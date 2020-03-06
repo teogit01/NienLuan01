@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<!--bootstrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+
+    <style type="text/css">
+
+    	.main{
+    		width: 100%;
+    		height:500px;
+    		position: absolute;
+    		top: 50%;
+    		left: 50%;
+    		transform: translate(-50%, -50%);
+    		
+    	}
+    	.btn {
+    		position: absolute;    	
+    		left: 50%;
+    		transform: translate(-50%);
+
+    	}
+    </style>
+</head>
+<body>
+	<div class="main">
+		<h1 style="text-align: center;">Login</h1>
+		<form method="post" action="login">
+			<div class="container col-sm-4">
+				<div class="row">
+					<label>Username</label>
+					<input type="text" name="user" class="form-control">
+					<label>Password</label>
+					<input type="password" name="pass" class="form-control">	
+				</div>
+				<br>
+				<button class="btn btn-primary">Login</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
+
