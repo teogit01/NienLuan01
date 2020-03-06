@@ -1,5 +1,8 @@
 const functions = {
 	getLogin : (req,res)=>{
+		if (req.signedCookies.admin){
+			res.redirect('/');
+		}
 		res.render('auth/login');
 	},
 	postLogin : (req,res)=>{
@@ -8,8 +11,10 @@ const functions = {
 			res.render('auth/login');
 			return;
 		} 
-			res.cookie('admin','admin');
-			res.redirect('/cinemas/');
+			res.cookie('admin','admin',{
+				signed: true
+			});
+			res.redirect('/');
 		
 	}	
 

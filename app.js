@@ -2,6 +2,7 @@ import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import session from 'express-session';
 
 
 //import routes
@@ -16,14 +17,13 @@ const port = 3000;
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(cookieParser());
+app.use(cookieParser('adb'));
 
 app.use(express.static('public'));
 app.set('views','./views');
 app.set('view engine', 'ejs');
 
 //use routes
-app.use('/',indexRoutes);
 app.use('/login',authRoutes);
 app.use('/logout',function(req,res){
 	res.clearCookie('admin');
@@ -31,8 +31,9 @@ app.use('/logout',function(req,res){
 	res.redirect('/login');
 });
 
-
 app.use(expressLayouts);
+
+app.use('/',authMiddleware.requireAuth,indexRoutes);
 
 app.use('/cinemas',authMiddleware.requireAuth,cinemaRoutes);
 
