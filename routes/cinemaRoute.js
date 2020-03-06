@@ -2,6 +2,7 @@ import express from 'express';
 import multer from 'multer';
 
 import cinemaController from '../controllers/cinemaController';
+import session from '../sessions/session';
 
 const router = express.Router();
 var storage = multer.diskStorage({
@@ -16,12 +17,17 @@ var upload = multer({storage:storage});
 
 router.get('/',cinemaController.index);
 //Danh sach phim
-router.get('/list',cinemaController.list);
+router.get('/list',session.message,cinemaController.list);
 
 //Them phim
-router.get('/add',cinemaController.getAdd);
+router.get('/add',session.message,cinemaController.getAdd);
 router.post('/add',
 		upload.single('fposter'),
 			cinemaController.postAdd);
 
+router.get('/delete/:id',cinemaController.delete);
+
 export default router;
+
+
+

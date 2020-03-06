@@ -3,6 +3,13 @@
         color: red;
       }
   </style>
+    
+    <% if(message) {%>
+        <div id='showMessage' style="text-align: right;padding-right: 10%" class="alert alert-<%- message.type %>">
+            <%= message.message %>
+        </div>
+    <% } %>
+   
   <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
@@ -52,7 +59,7 @@
                                                  <textarea class="form-control" name="trailer"id="trailer"></textarea>
                     
                                             </div>
-                                            <button class="btn btn-primary">Add</button>
+                                            <button style="float: right;" class="btn btn-primary">Add</button>
                                         </form>
                                     </div>
                                 </div>
@@ -67,11 +74,14 @@
         </div>
     <script type="text/javascript">
         $(document).ready(function(){
-            
+            setTimeout(function(){ 
+                $('#showMessage').hide()
+            }, 3000);
         });
         $('#openday').datepicker({
             showAnim: 'drop',
             dateFormat: 'dd/mm/yy'
         });
         CKEDITOR.replace( 'trailer' );
+
     </script>    

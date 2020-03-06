@@ -4,21 +4,25 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 
-
 //import routes
 import authRoutes from './routes/auth';
 import indexRoutes from './routes/index';
 import cinemaRoutes from './routes/cinemaRoute';
 import authMiddleware from './middlewares/auth';
+//import validatorLogin from './validators/validator.login';
 
 const app = express();
 const port = 3000;
 
+//setup bodyParser
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(cookieParser('adb'));
+// setup express-session
+app.use(cookieParser('secret'));
+app.use(session({cookie:{maxAge:null}}));
 
+//set up ejs
 app.use(express.static('public'));
 app.set('views','./views');
 app.set('view engine', 'ejs');
@@ -31,6 +35,7 @@ app.use('/logout',function(req,res){
 	res.redirect('/login');
 });
 
+// setup expressLayouts
 app.use(expressLayouts);
 
 app.use('/',authMiddleware.requireAuth,indexRoutes);

@@ -29,7 +29,17 @@
     </style>
 </head>
 <body>
+    
+        <% if (errors.length) { %>
+            <% errors.forEach(function(error){%>
+            <div class="alert alert-primary">
+                <%- error %>
+            </div>
+            <% }); %>
+       <% } %>
+    
 	<div class="main">
+
 		<h1 style="text-align: center;">Login</h1>
 		<form method="post" action="login">
 			<div class="container col-sm-4">

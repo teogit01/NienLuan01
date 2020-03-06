@@ -54,6 +54,11 @@ const functions = {
 				//fields: [name, code, runtime, genre, director, cast, trailer, openday, country, status],
 			});
 			if (afilm){
+				//res.redirect('back');
+				req.session.message = {
+					type: 'success',
+					message: 'Insert Successfully',
+				}
 				res.redirect('back');
 			}else{
 				res.json({
@@ -65,6 +70,27 @@ const functions = {
 				error: error
 			});
 		}
+	},
+	delete : async(req,res)=>{
+		let id = parseInt(req.params.id);
+		//res.send(typeof(id));
+		try{
+			await Films.destroy({
+				where: {
+					id: id
+				}
+			});
+			req.session.message = {
+					type: 'success',
+					message: 'Deleted Successfully',
+				}
+			res.redirect('/cinemas/list');
+		}catch(error){
+			res.json({
+				error: error
+			});	
+		}
+		res.end();
 	}
 }
 

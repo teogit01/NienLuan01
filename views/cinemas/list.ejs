@@ -7,6 +7,12 @@
         font-family: none;
       }
   </style>
+
+    <% if(message) {%>
+        <div id='showMessage' style="text-align: right;padding-right: 10%" class="alert alert-<%- message.type %>">
+            <%= message.message %>
+        </div>
+    <% } %>
   <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
@@ -89,7 +95,7 @@
                 <!-- Orders -->
                 <div class="orders">
                     <div class="row">
-                        <div class="col-xl-8">
+                        <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="box-title">Danh sách  </h4>
@@ -107,6 +113,7 @@
                                                     <th>Đạo diễn</th>
                                                     <th>Thời gian </th>
                                                     <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -131,6 +138,12 @@
                                                         <span class="badge badge-complete">On</span>
                                                     </td>
                                                     <%  } %>
+
+                                                    <td>
+                                                        <span><i style='font-size:15px' class='fas'>&#xf303;</i></span>
+                                                        &nbsp&nbsp&nbsp
+                                                        <a href='http://localhost:3000/cinemas/delete/<%- film.id %>'><span><i class='far fa-trash-alt' style='font-size:15px'></i></span></a>
+                                                    </td>
                                                 </tr>
                                             <% }); %>
                                             </tbody>
@@ -138,32 +151,7 @@
                                     </div> <!-- /.table-stats -->
                                 </div>
                             </div> <!-- /.card -->
-                        </div>  <!-- /.col-lg-8 -->
-
-                        <div class="col-xl-4">
-                            <div class="row">
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <div class="chart-container ov-h">
-                                                <div id="flotPie1" class="float-chart"></div>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.card -->
-                                </div>
-
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card bg-flat-color-3  ">
-                                        <div class="card-body">
-                                            <h4 class="card-title m-0  white-color ">August 2018</h4>
-                                        </div>
-                                         <div class="card-body">
-                                             <div id="flotLine5" class="flot-line"></div>
-                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- /.col-md-4 -->
+                        </div>  <!-- /.col-lg-8 -->                    
                     </div>
                 </div>
                 <!-- /.orders -->
@@ -171,3 +159,12 @@
             </div>
             <!-- .animated -->
         </div>
+
+        <script type="text/javascript">
+             $(document).ready(function(){
+            setTimeout(function(){ 
+                $('#showMessage').hide()
+            }, 3000);
+        });
+
+        </script>
