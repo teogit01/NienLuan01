@@ -24,8 +24,15 @@ router.get('/add',session.message,cinemaController.getAdd);
 router.post('/add',
 		upload.single('fposter'),
 			cinemaController.postAdd);
-
+// delete
 router.get('/delete/:id',cinemaController.delete);
+
+//edit
+router.get('/edit/:id',session.message,cinemaController.getEdit);
+router.post('/edit/:id',
+		upload.single('fposter'),
+			cinemaController.postEdit);
+
 
 export default router;
 

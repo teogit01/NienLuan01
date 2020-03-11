@@ -1,0 +1,176 @@
+<style type="text/css">
+    input[type=checkbox]{
+        height: 0;
+        width: 0;
+        visibility: hidden;
+    }
+
+    #off,#on {
+        text-indent: : -9999px;
+        width: 70px;
+        height: 30px;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+
+    }
+    #off{
+        background: grey;
+    }
+    #on{
+        background: green;
+    }
+    #off:after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 90px;        
+    }
+     #on:after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border-radius: 90px;        
+        right: 0px;
+        
+    }
+    input:checked + #off {
+        background: green;
+    }
+    input:checked + #on {
+        background: grey;
+    }
+    input:checked + #off:after {
+        left:  100%;
+        transform: translateX(-100%);
+    }
+
+    input:checked + #on:after {
+        right:  100%;
+        transform: translateX(100%);
+    }
+
+    label:active:after {
+        
+    }
+
+</style>
+ <% if(message) {%>
+        <div id='showMessage' style="text-align: right;padding-right: 10%" class="alert alert-<%- message.type %>">
+            <%= message.message %>
+        </div>
+    <% } %>
+
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="card-body" style="display: flex;">
+                   <div class="col-md-8" style="background: ">
+                        <table class="table">
+                           <tr>
+                               <th><label for="name">Tên</label></th>
+                               <!-- <td><%- afilm[0].name %></td> -->
+                               <td><input type="text" id="name" name="name" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].name %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="code">Mã</label></th>
+                               <!-- <td><%- afilm[0].code %></td> -->
+                               <td><input type="text" id="code" name="code" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].code %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="runtime">Thời lượng</label></th>
+                               <!-- <td><%- afilm[0].runTime %></td> -->
+                               <td><input type="number" id="runtime" name="runtime" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].runTime %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="director">Đạo diễn</label></th>
+                               <!-- <td><%- afilm[0].director %></td> -->
+                               <td><input type="text" id="director" name="director" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].director %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="cast">Diễn viên</label></th>
+                               <!-- <td><%- afilm[0].cast %></td> -->
+                               <td><input type="text" name="cast"id="cast" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].cast %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="openday">Ngày khởi chiếu</label></th>
+                               <!-- <td><%- afilm[0].openDay %></td> -->
+                               <td><input id='openday' type="text" name="openday" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].openDay %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="genre">Thể loại</label></th>
+                               <!-- <td><%- afilm[0].genre %></td> -->
+                               <td><input type="text" name="genre" id="genre" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].genre %>"></td>
+                           </tr>
+                           <tr>
+                               <th><label for="country">Quốc gia</label></th>
+                               <!-- <td><%- afilm[0].country %></td> -->
+                               <!-- <td><input type="text" id="country" name="country" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].country %>"></td> -->
+                               <td><select class="form-control" id="country">
+                                 <option value="<%- afilm[0].country %>"><%- afilm[0].country %></option>
+                                 <option value="Korea">Korea</option>
+                                 <option value="America">America</option>
+                                 <option value="China">China</option>
+                                 <option value="VietNam">VietNam</option>
+                               </select></td>
+                           </tr>
+                           <tr>
+                               <th><label for="trailer">Tóm tắt</label></th>
+                               <!-- <td><%- afilm[0].trailer %></td> -->
+                               <td><textarea style="border: 0" id="trailer" class="form-control" name="trailer" id='trailer'></textarea>
+                                </td>
+                           </tr>
+                           <tr>
+                               <th>Stutus</th>
+                               <!-- <td><%- afilm[0].status %></td> -->
+                              <!--  <td><input type="text" name="status" class="form-control" style="border: 0px" value="" placeholder="<%- afilm[0].status %>"></td> -->
+                                <% if(afilm[0].status == 1) { %>
+                               <td style="display: flex">
+                                   <input type="checkbox" id="onstatus" name="status" value=0></span>
+                                   <label for="onstatus" id="on"></label>
+                               </td>
+                               
+                               <% } else { %>
+                                <td style="display: flex">
+                                   <input type="checkbox" id='offstatus' name="status" value=1></span>
+                                   <label for="offstatus" id='off'></label>
+                               </td>
+                               <% } %>
+                           </tr>
+                           <tr>
+                                <td><a href="../list"><button type="button" class="btn btn-success">Back</button></td></a>
+                                <td><button class="btn btn-primary">Save</button></td>
+
+                           </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                          <img style="height: 400px" src="/images/posters/<%- afilm[0].poster %>">
+                          <input type="file" name='fposter' class="form-control">
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    });
+    $('#openday').datepicker({
+        showAnim: 'drop',
+        dateFormat: 'dd/mm/yy'
+    });
+
+
+</script>
+

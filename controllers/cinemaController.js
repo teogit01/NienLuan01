@@ -8,6 +8,10 @@ const functions = {
 	list : async(req,res)=>{
 		try{
 			let films = await Films.findAll({
+				order: [
+					['id','ASC']
+				]
+			},{
 				attributes: ['id','name','code','runTime','status'],
 			});
 			if (films){
@@ -47,7 +51,7 @@ const functions = {
 				openDay: openday ? openday : null,
 				country: country ? country : null,
 				poster: fposter ? fposter : null,
-				status:0
+				status:0,
 			},{
 				fields: ['name','code','runTime','genre','director',
 							'cast','trailer','openDay','country','poster','status'],
@@ -91,6 +95,73 @@ const functions = {
 			});	
 		}
 		res.end();
+	},
+	getEdit : async(req,res)=>{
+		let id = parseInt(req.params.id);
+		try{
+			const afilm = await Films.findAll({
+				where: {
+					id: id
+				},
+				attributes: ['id','name','code','runTime','genre','director',
+					'status','cast','trailer','openDay','country','poster'],
+			});
+			if (afilm){
+				res.render('cinemas/edit',{afilm:afilm});
+			} else {
+				res.send('falid');
+			}
+		}catch(error){
+			res.json({
+				err: error
+			});
+		}
+		//res.render('cinemas/edit');
+	},
+	postEdit : async(req,res)=>{
+		let id = req.params.id;
+		var status = req.body.status;
+		let {name, code, runtime, genre, director, cast, openday, country} = req.body;
+		
+		var fposter = null;
+		if (typeof(req.file) != 'undefined'){
+			//fposter = req.file.originalname;
+			fposter = req.file.originalname;
+		}
+		try {
+			let afilm = await Films.findAll({
+				attributes :['id','name'],
+					where: {
+						id
+					}
+			});		
+			if (afilm.length > 0 ) {
+				afilm.forEach(async (item) => {
+					await item.update({
+						name: name ? name : item.name,
+						code: code ? code : item.code,
+						runTime: runtime ? runtime : item.runTime,
+						genre: genre ? genre : item.genre,
+						director: director ? director : item.director,
+						cast: cast ? cast : item.cast,
+						openDay: openday ? openday : item.openday,
+						country: country ? country : item.country,
+						poster: fposter ? fposter : item.poster,
+						status:  status ? status : item.status,
+					});
+				});
+			}
+			// res.send(afilm);
+			// res.end();
+			
+			req.session.message = {
+				type: 'success',
+				message: 'Updated Successfully!',
+			};
+			res.redirect('back');
+		} catch (error) {
+			res.send(error);
+		}
 	}
 }
 

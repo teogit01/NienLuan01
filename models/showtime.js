@@ -22,8 +22,14 @@ const ShowTimes = sequelize.define('showTimes',{
 	},
 	endTime:{
 		type: Sequelize.TIME
+	},
+	idFilm:{
+		type: Sequelize.INTEGER
+	},
+	idShedule:{
+		type: Sequelize.INTEGER
 	}
 },{
-	timestamps:true,
+	timestamps: true,
 });
 export default ShowTimes;

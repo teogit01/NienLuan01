@@ -122,7 +122,7 @@
                                                     <td class="serial"><%- index+1 %></td>
                                                     <td class="avatar">
                                                         <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
+                                                            <a href="#"><img lass="rounded-circle" src="/images/posters/<%- film.poster %>"></a>
                                                         </div>
                                                     </td>
                                                     <td> <%- film.id %> </td>
@@ -140,7 +140,7 @@
                                                     <%  } %>
 
                                                     <td>
-                                                        <span><i style='font-size:15px' class='fas'>&#xf303;</i></span>
+                                                        <span><a href='http://localhost:3000/cinemas/edit/<%- film.id %>'><i style='font-size:15px' class='fas'>&#xf303;</i></a></span>
                                                         &nbsp&nbsp&nbsp
                                                         <a href='http://localhost:3000/cinemas/delete/<%- film.id %>'><span><i class='far fa-trash-alt' style='font-size:15px'></i></span></a>
                                                     </td>

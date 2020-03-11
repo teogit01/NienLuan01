@@ -23,6 +23,6 @@ const Rooms = sequelize.define('rooms',{
 		type: Sequelize.TIME
 	}
 },{
-	timestamps:true,
+	timestamps: true,
 });
 export default Rooms;

@@ -6,9 +6,11 @@ import session from 'express-session';
 
 //import routes
 import authRoutes from './routes/auth';
+import authMiddleware from './middlewares/auth';
 import indexRoutes from './routes/index';
 import cinemaRoutes from './routes/cinemaRoute';
-import authMiddleware from './middlewares/auth';
+import showtimeRoutes from './routes/showtimeRoute';
+
 //import validatorLogin from './validators/validator.login';
 
 const app = express();
@@ -41,6 +43,7 @@ app.use(expressLayouts);
 app.use('/',authMiddleware.requireAuth,indexRoutes);
 
 app.use('/cinemas',authMiddleware.requireAuth,cinemaRoutes);
+app.use('/showtimes',authMiddleware.requireAuth,showtimeRoutes);
 
 app.listen(port,function(){
 	console.log("Server Start port 3000")

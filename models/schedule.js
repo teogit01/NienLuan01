@@ -20,6 +20,6 @@ const Schedules = sequelize.define('schedules',{
 		type: Sequelize.DATE
 	}
 },{
-	timestamps:true,
+	timestamps: true,
 });
 export default Schedules;
