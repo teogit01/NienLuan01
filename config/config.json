@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "00",
-    "database": "NienLuan01",
+    "database": "Cinema_DB",
     "host": "localhost",
     "dialect": "postgres",
     "operatorsAliases": false

@@ -12,24 +12,27 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../databases/database';
 
-const ShowTimes = sequelize.define('showTimes',{
-	id:{
-		type: Sequelize.INTEGER,
-		primaryKey: true
-	},
-	startTime:{
-		type: Sequelize.TIME
-	},
-	endTime:{
-		type: Sequelize.TIME
-	},
-	idFilm:{
-		type: Sequelize.INTEGER
-	},
-	idShedule:{
-		type: Sequelize.INTEGER
-	}
+const ShowTimes = sequelize.define('ShowTimes',{
+  id:{
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
+  start:{
+    type: Sequelize.STRING
+  },
+  end:{
+    type: Sequelize.STRING
+  },
+  idFilm:{
+    type: Sequelize.INTEGER
+  },
+  idShedule:{
+    type: Sequelize.INTEGER
+  },
+  idRoom:{
+    type: Sequelize.INTEGER
+  }
 },{
-	timestamps: true,
+  timestamps: true,
 });
 export default ShowTimes;

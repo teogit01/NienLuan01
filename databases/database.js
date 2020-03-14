@@ -1,13 +1,13 @@
 import Sequelize from 'sequelize';
 
 export const sequelize = new Sequelize(
-		'NienLuan01',
+		'Cinema_DB',
 		'postgres',
 		'00',
 		{
 			host:'localhost',
 			dialect:'postgres',
-			//operatorsAliases: false,
+			operatorsAliases: false,
 			logging: false,
 			pool:{
 				max:5,

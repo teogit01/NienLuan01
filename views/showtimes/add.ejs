@@ -1,63 +1,130 @@
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<div class="content">
-	<div class="container">
-		<div class="">
-			<form>
-				<label>Chọn phim</label>
-				<input type="text" 
-					name="name" 
-					class="form-control" 
-					id="name" 
-					autocomplete='off'>
-				<select 
-					id="showSearch" 
-					class="form-control"
-					style="display: none" 						
-					>
-					<div class="op">
-						<option>them</option>
-					</div>
-				</select>
-				<!-- <div id='showSearch' class="form-control"></div> -->
-				<select>
-					<option></option>
-					<option></option>
-				</select>
-				<label>Chọn ngày</label>
-				<input 
-					type="text" 
-					name="dayss" 
-					class="form-control"
-					>
 
-				<select class="form-control" name='day' id='day'>
-					<!-- <option class="days" value="Monday">Thứ 2</option>
-					<option class="days" value="Tuesday">Thứ 3</option>
-					<option class="days" value="Wednesday">Thứ 4</option>
-					<option class="days" value="Thursday">Thứ 5</option>
-					<option class="days" value="Friday">Thứ 6</option>
-					<option class="days" value="Saturday">Thứ 7</option>
-					<option class="days" value="Sunday">Chủ nhật</option> -->
-					<option class="days" value="-1">Select</option>
-					<option class="days" id= 2 value="1">Monday</option>
-					<option class="days" id= 3 value="2">Tuesday</option>
-					<option class="days" id= 4 value="3">Wednesday</option>
-					<option class="days" id= 5 value="4">Thursday</option>
-					<option class="days" id= 6 value="5">Friday</option>
-					<option class="days" id= 7 value="6">Saturday</option>
-					<option class="days" id= 8 value="-1">Sunday</option>
+<!--TimePicker-->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<style type="text/css">
+	a:active{
+		color: white
+	}
+	label{
+		font-weight: bold;
+	}
+</style>
+
+<br>
+<div class="content">
+	<div class="container-fluid"style="background: ">
+		<div class="head">
+			<div class="text-right mr-4" style="background-color: ">
+
+				<input type="text" style="border: 0px;font-size: 30px" class="schedule" id='schedule' name="" value="">
+
+			</div>
+
+			<div class="tab">
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<!--id="nav-home-tab"-->
+						<% days.forEach((item,index) => { %>				
+
+						<a class="nav-item nav-link thu" id='<%- index %>'  data-toggle="tab" href="#<%- item %>" role="tab" aria-controls="nav-home" aria-selected="true"><%- item %> 
+						</a>
+
+						<% }) %>		
+					<!-- <a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Tuesday" role="tab" aria-controls="nav-profile" aria-selected="false">Tuesday</a>
+					
+					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Wednesday" role="tab" aria-controls="nav-profile" aria-selected="false">Wednesday</a>
+					
+					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Thursday" role="tab" aria-controls="nav-profile" aria-selected="false">Thursday</a>
+
+					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Friday" role="tab" aria-controls="nav-profile" aria-selected="false">Friday</a>
+
+					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Saturday" role="tab" aria-controls="nav-profile" aria-selected="false">Saturday</a>
+
+					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Sunday" role="tab" aria-controls="nav-profile" aria-selected="false">Sunday</a>
+					
+				-->
+			</div>
+			</nav>
+			<div class="tab-content" style="padding: 20px" id="nav-tabContent">
+			<% days.forEach(item => { %>	
+			<div class="tab-pane fade show nd " id="<%- item %>" role="tabpanel" aria-labelledby="nav-home-tab">
+				<%- item %>
+			</div>
+			<% }) %>
+			
+
+				<!-- <div class="tab-pane fade" id="nav-Tuesday" role="tabpanel" aria-labelledby="nav-profile-tab">
+					TuesDay
+				</div>
+				<div class="tab-pane fade" id="nav-Wednesday" role="tabpanel" aria-labelledby="nav-contact-tab">
+					Wednesday
+				</div>
+				<div class="tab-pane fade" id="nav-Thursday" role="tabpanel" aria-labelledby="nav-contact-tab">
+					Thursday
+				</div>
+				<div class="tab-pane fade" id="nav-Friday" role="tabpanel" aria-labelledby="nav-contact-tab">
+					Friday
+				</div>
+				<div class="tab-pane fade" id="nav-Sat	urday" role="tabpanel" aria-labelledby="nav-contact-tab">
+					Saturday
+				</div>
+				<div class="tab-pane fade" id="nav-Sunday" role="tabpanel" aria-labelledby="nav-contact-tab">
+					Sunday
+				</div> -->
+				
+				<!-- </div> -->
+			</div>
+			</div>
+		</div>	
+		<br>
+		<hr>
+	<div class="container-fluid">
+		<div class="col-5"  style="background:">
+			<form action="add" method="post">
+				<label>Tim Phim</label>
+				<input type="text" 
+				name="search" 
+				class="form-control" 
+				id="search" 
+				autocomplete='off'>
+
+				<label>Chọn phim</label>
+				<select name='name' class="form-control">
+					<option value="0">Select film</option>
+					<% films.forEach(item => { %>
+					<option value="<%- item.id %>"><%- item.name %></option>
+					<% }) %>
+				</select>
+			<!-- <div id='showSearch' class="form-control"></div> -->
+
+			<label>Chọn ngày</label>
+			<select class="form-control" name='day' id='day'>
+
+					<option class="days" id=-1 value="">Select</option>
+					<option class="days" id= 1 value="">Monday</option>
+					<option class="days" id= 2 value="">Tuesday</option>
+					<option class="days" id= 3 value="">Wednesday</option>
+					<option class="days" id= 4 value="">Thursday</option>
+					<option class="days" id= 5 value="">Friday</option>
+					<option class="days" id= 6 value="">Saturday</option>
+					<option class="days" id= 0 value="">Sunday</option>
+				</select>
+				<label>Chọn Phòng</label>
+				<select name="room" class="form-control">
+					<option value="0">Phong 1</option>
 				</select>
 				<label>Thời gian bắt đầu</label>
-				<input type="text" name="timestart" class="form-control">
-
-				</form>	
+				<input type="text" id='timestart' name="timestart" class="form-control">
+				<br>
+				<button class="btn btn-primary btn-block">Sumit</button>
+			</form>	
 		</div>
 	</div>
-</div>
+</div> <!--end content-->
 
 <!-- <script type="text/javascript">
 	$("#name").on('keyup',function(){
@@ -79,10 +146,12 @@
 
 <script type="text/javascript">
 	
+	// Show danh sach phim
+	// Autocomplete
 	$(function(){
 
-		$('#name').on('keyup',function(){
-			var name = $('#name').val();
+		$('#search').on('keyup',function(){
+			var name = $('#search').val();
 
 			$.ajax({
 				url: 'search',
@@ -92,36 +161,158 @@
 			}).done(function(req,res){
 				var names = [];
 				req.forEach(item => names.push(item.name))
-				$('#name').autocomplete({
+				$('#search').autocomplete({
 					source: names
 				})
 			})
 		})
 	})
-
+	// A day of week
 	$(function(){
 		$(document).ready(function(){
 			$.ajax({
 				url: 'getday',
 				method:'post',
-				data: {current_day:current_day}
+				//data: {current_day:current_day}
 			}).done(function(req,res){
+				let newDays = req.days.reverse()
 				$('.days').each(function(index,attribute){
 					//console.log(index,attribute.value)
-					if (attribute.value !== '-1')
-						if (req > attribute.value){
-							//$('.days')[0].css('display','none')
-							$(this).css('display','none')
-								//console.log(attribute.value)
+					//$('.days').css('display','none')
+					if (attribute.id !== '-1')
 
+						if (req.day == 0){
+							$(this).css('display','none')
+
+							let newValue = ''
+							newValue += newDays[0].day
+							newValue += '/' + newDays[0].month
+							newValue += '/' + newDays[0].year
+							$(this).val(newValue)
+							console.log($(this).val())
+							$('#0').css('display','block')
+
+							return
 						}
 
-				})
+						if (req.day > attribute.id & attribute.id != 0){
+							//$('.days')[0].css('display','none')
+							$(this).css('display','none')
+							//$(this).css('display','block')
+						} else {
+							let newValue = ''
+							newValue += newDays[7 - index].day
+							newValue += '/' + newDays[7 - index].month
+							newValue += '/' + newDays[7 - index].year
+							$(this).val(newValue)
+							//console.log($(this).val())
+
+							//console.log(newDays[7 - index])
+							// console.log(req.days.reverse()[0])
+						}
+						//$('#0').css('display','block')
+
+					})
+				//console.log(req.days.reverse()[])
+				//console.log(req.days)
+
 			})
 		})
 	})
+	//Set Active && dayOfWeeks
+	$(document).ready(function(){
+		//const theDay = new Date().getDay()
+		$.ajax({
+			url:'setActive',
+			method:'post',
+		}).done(function(req,res){
+			console.log(req.actives)
+			req.actives.forEach((item,index) => {
+				if (item != 0){
+					//console.log(index)
+					$('.thu')[index].classList.add('active')
+					$('.nd')[index].classList.add('active')
+					// let dayOfWeeks = req.dayOfWeeks
+					// let active_day = dayOfWeeks[index].day
+					// let active_month = dayOfWeeks[index].month
+					// let active_year = dayOfWeeks[index].year
+					// console.log(active_day)
 
-	var today = new Date('2020-10-02')
-	var current_day = today.getDay()
-	//alert(current_day)
+					$('.thu').on('click',function(){
+						//console.log($(this)[0].id)
+						let position = $(this)[0].id
+						let dayOfWeeks = req.dayOfWeeks
+						let day = dayOfWeeks[position].day
+						let month = dayOfWeeks[position].month
+						let year = dayOfWeeks[position].year
+						let scheduleValue = day + '/' + month + '/' + year
+						$('#schedule').val(scheduleValue)
+						console.log(scheduleValue)
+
+					})
+					console.log(req.dayOfWeeks)
+					
+				}
+			})
+			
+
+		})
+	})
+	// Schedule
+	$(document).ready(function(){
+		let now = new Date()
+		let day = now.getDate() 
+		let month = now.getMonth()+1
+		let year =now.getFullYear()
+
+		const schedule_today = day + '/' + month + '/' + year
+
+		$('#schedule').on('click',function(){
+			console.log('clisk')
+			//$('#schedule').css('display','block')
+			
+			//console.log($('#schedule').val())
+			$('#schedule').datepicker({
+            //showAnim: 'drop',
+            //dateFormat: 'dd/mm/yy',
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            autoclose: true,
+            clearBtn: true,
+        });
+			
+		})
+
+		
+		$('#schedule').val(schedule_today)
+	})
+
+	$(document).ready(function(){
+		//console.log($('#schedule')[0].value)
+	})
+	
+	$(document).ready(function(){
+		$('#schedule').datepicker({
+            //showAnim: 'drop',
+            //dateFormat: 'dd/mm/yy',
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            autoclose: true,
+            clearBtn: true,
+        })
+
+	})
+	$('#timestart').timepicker({
+		timeFormat: 'h:mm p',
+		interval: 60,
+		minTime: '00',
+		maxTime: '6:00pm',
+		defaultTime: '00',
+		startTime: '10:00',
+		dynamic: false,
+		dropdown: true,
+		scrollbar: true
+	});
+
+	
 </script>

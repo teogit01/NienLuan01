@@ -9,7 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.ENUM('row','column')
+        type: Sequelize.STRING
+      },
+      row: {
+        type: Sequelize.STRING
+      },
+      column: {
+        type: Sequelize.STRING
       },
       status: {
         type: Sequelize.INTEGER

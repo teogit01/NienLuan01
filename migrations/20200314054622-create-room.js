@@ -11,9 +11,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      freeTime: {
-        type: Sequelize.TIME
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

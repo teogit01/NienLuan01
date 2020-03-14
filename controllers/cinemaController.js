@@ -51,7 +51,7 @@ const functions = {
 				openDay: openday ? openday : null,
 				country: country ? country : null,
 				poster: fposter ? fposter : null,
-				status:0,
+				status: 0,
 			},{
 				fields: ['name','code','runTime','genre','director',
 							'cast','trailer','openDay','country','poster','status'],

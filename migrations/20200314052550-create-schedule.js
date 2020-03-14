@@ -1,18 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ShowTimes', {
+    return queryInterface.createTable('Schedules', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      startTime: {
-        type: Sequelize.TIME
+      date: {
+        type: Sequelize.STRING
       },
-      endTime: {
-        type: Sequelize.TIME
+      day: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ShowTimes');
+    return queryInterface.dropTable('Schedules');
   }
 };

@@ -1,15 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Schedules', {
+    return queryInterface.createTable('ShowTimes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      date: {
-        type: Sequelize.DATE
+      start: {
+        type: Sequelize.STRING
+      },
+      end: {
+        type: Sequelize.STRING
+      },
+      idFilm: {
+        type: Sequelize.INTEGER
+      },
+      idSchedule: {
+        type: Sequelize.INTEGER
+      },
+      idRoom: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -22,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Schedules');
+    return queryInterface.dropTable('ShowTimes');
   }
 };

@@ -47,7 +47,7 @@ const Films = sequelize.define('Films',{
     type: Sequelize.STRING
   },
   openDay:{
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
   poster:{
     type: Sequelize.STRING
@@ -61,4 +61,4 @@ const Films = sequelize.define('Films',{
 },{
   timestamps: true,
 });
-export default Films;
+export default Films

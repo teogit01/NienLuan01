@@ -19,7 +19,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../databases/database';
 
-const Users = sequelize.define('users',{
+const Users = sequelize.define('Users',{
   id:{
     type: Sequelize.INTEGER,
     primaryKey: true
@@ -43,13 +43,13 @@ const Users = sequelize.define('users',{
     type: Sequelize.STRING
   },
   birthday:{
-    type: Sequelize.DATE
+    type: Sequelize.STRING
   },
   address:{
     type: Sequelize.STRING
   },
   point:{
-    type: Sequelize.DOUBLE
+    type: Sequelize.STRING
   }
 },{
   timestamps: true,

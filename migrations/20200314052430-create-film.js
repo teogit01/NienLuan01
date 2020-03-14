@@ -1,18 +1,12 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Films', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      username: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
       },
       name: {
         type: Sequelize.STRING
@@ -20,20 +14,32 @@ module.exports = {
       code: {
         type: Sequelize.STRING
       },
-      phone: {
+      runTime: {
+        type: Sequelize.INTEGER
+      },
+      genre: {
         type: Sequelize.STRING
       },
-      email: {
+      director: {
         type: Sequelize.STRING
       },
-      birthday: {
-        type: Sequelize.DATE
-      },
-      address: {
+      cast: {
         type: Sequelize.STRING
       },
-      point: {
-        type: Sequelize.DOUBLE
+      trailer: {
+        type: Sequelize.STRING
+      },
+      openDay: {
+        type: Sequelize.STRING
+      },
+      poster: {
+        type: Sequelize.STRING
+      },
+      country: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -46,6 +52,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Films');
   }
 };

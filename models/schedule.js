@@ -11,13 +11,16 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../databases/database';
 
-const Schedules = sequelize.define('schedules',{
+const Schedules = sequelize.define('Schedules',{
 	id:{
 		type: Sequelize.INTEGER,
 		primaryKey: true
 	},
 	date:{
-		type: Sequelize.DATE
+		type: Sequelize.STRING
+	},
+	day:{
+		type: Sequelize.INTEGER
 	}
 },{
 	timestamps: true,

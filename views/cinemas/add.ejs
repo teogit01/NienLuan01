@@ -59,7 +59,9 @@
                                                  <textarea class="form-control" name="trailer"id="trailer"></textarea>
                     
                                             </div>
-                                            <button style="float: right;" class="btn btn-primary">Add</button>
+                                            <div class="col sm-3"></div>
+                                            <div class="col-sm-6"><button style="float: right;" class="btn btn-primary">Add</button></div>
+                                            <div class="col-sm-3"></div>
                                         </form>
                                     </div>
                                 </div>
@@ -78,9 +80,15 @@
                 $('#showMessage').hide()
             }, 3000);
         });
+
         $('#openday').datepicker({
-            showAnim: 'drop',
-            dateFormat: 'dd/mm/yy'
+            //showAnim: 'drop',
+            //dateFormat: 'dd/mm/yy',
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            autoclose: true,
+            clearBtn: true,
+            
         });
         CKEDITOR.replace( 'trailer' );
 

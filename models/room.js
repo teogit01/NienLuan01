@@ -11,18 +11,15 @@
 // };
 import Sequelize from 'sequelize';
 import { sequelize } from '../databases/database';
-const Rooms = sequelize.define('rooms',{
+const Rooms = sequelize.define('Rooms',{
 	id:{
 		type: Sequelize.INTEGER,
 		primaryKey: true
 	},
 	name:{
 		type: Sequelize.STRING
-	},
-	freeTime:{
-		type: Sequelize.TIME
 	}
 },{
 	timestamps: true,
 });
-export default Rooms;
+export default Rooms
