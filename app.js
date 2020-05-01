@@ -10,6 +10,7 @@ import authMiddleware from './middlewares/auth';
 import indexRoutes from './routes/index';
 import cinemaRoutes from './routes/cinemaRoute';
 import showtimeRoutes from './routes/showtimeRoute';
+import contentRoutes from './routes/contentRoute';
 
 //import validatorLogin from './validators/validator.login';
 
@@ -38,6 +39,7 @@ app.use('/logout',function(req,res){
 });
 
 // setup expressLayouts
+app.use('/content',contentRoutes)
 app.use(expressLayouts);
 
 app.use('/',authMiddleware.requireAuth,indexRoutes);

@@ -1,4 +1,5 @@
 import Rooms from '../models/room'
+import Schedules from '../models/schedule'
 function index(req,res){
 	res.render('cinemas/');
 }
@@ -7,7 +8,7 @@ function index2(req,res){
 }
 
 function addRoom(req,res){
-	res.send("<form action'addRoom' method='post'><button>ADDRoom</button></form>")
+	res.send("<form action'addRoom' method='post'>ADDRoom</button></form>")
 }
 async function postaddRoom(req,res){
 	
@@ -22,5 +23,29 @@ async function postaddRoom(req,res){
 	res.send("SUCCESSFULLY")
 
 }
+async function addSchedule(req,res){
+	res.send("<form action'addschedule' method='post'><input type='date'><button>ADDSCHEULE</button></form>")
+}
+async function postaddSchedule(req,res){
 
-export default {index,index2,addRoom,postaddRoom};
+	let date = '22/03/2020'
+	// let day = 'Saturday'
+	// for(let i=23; i<=31; i++){
+	// 	let aday = await Schedules.create({
+	// 		date:i+'/'+'03/2020',
+	// 		day:'a'
+	// 	},{
+	// 		fields: ['date','day']
+	// 	})
+	// }
+	let aday = await Schedules.create({
+		date:'31/03/2020',
+			day:'Tuesday'
+		},{
+			fields: ['date','day']
+		})
+	
+	res.send("SUCCESSFULLY")		
+}
+
+export default {index,index2,addRoom,postaddRoom,addSchedule,postaddSchedule};

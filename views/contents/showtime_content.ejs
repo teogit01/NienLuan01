@@ -1,0 +1,21 @@
+<div class="" style="width: 100%">
+	<% if (showtimes){ %>
+	<% idFilms.forEach((idFilm,index)=> {%>
+	<div>
+		<p style="font-weight:bold">
+			<%- filmOfShows[index].showtime[0].film.name%></p>
+		</div>
+		<div class="row w-10" style="text-align: center;">
+			<% filmOfShows[index].showtime.forEach(show=> {%>
+			<div class="form-control" style="width: 20%">
+				<%- show.start %> -
+				<%- show.end %>
+			</div>		
+			<% }) %>									
+		</div>
+
+		<hr>
+		<% }) %>
+		<% } %>
+	</div>
+</div>

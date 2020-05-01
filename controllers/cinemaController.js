@@ -1,11 +1,28 @@
 
 import Films from '../models/film';
+import ShowTimes from '../models/showtime';
 const functions = {
 	index : (req,res)=>{
 		//res.send("index");
 		res.render('cinemas');
 	},
 	list : async(req,res)=>{
+
+		let film = await Films.findAll({
+			raw:false,
+			where :{
+				id:1
+			},
+			include:{
+				model: ShowTimes,
+				as:'showtime',
+				required: false,
+				attributes:['id']
+			}
+		})
+		//console.log(film[0].get({plain: true}).showtime[0].id)
+		//console.log(film[0].ShowTimes.id)
+		//return 
 		try{
 			let films = await Films.findAll({
 				order: [

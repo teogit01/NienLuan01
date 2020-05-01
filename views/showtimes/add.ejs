@@ -12,15 +12,152 @@
 	label{
 		font-weight: bold;
 	}
-</style>
+	td:hover{
+		color: blue
+	}
+	#tbHidden{
+	visibility:hidden;
+	}
+	.table {
+		position: absolute;
+		text-align: center;
+		padding-left:35%; 		
+		width: 100%;
+		background-color: white;
+		z-index: 1;
+		border: 0px
+	}
+	.table1 {
+		margin-right: 25px
+	}
+	.runTime {
+		display: none
+	}
+	#endtime{
 
-<br>
+	}
+</style>
+ <% if(message) {%>
+        <div id='showMessage' style="text-align: right;padding-right: 10%" class="alert alert-<%- message.type %>">
+            <%= message.message %>
+        </div>
+    <% } %>
 <div class="content">
+	<div class="container-fluid">
+		<!-- <div id='showSearch' class="form-control"></div> -->
+		<label>Tim Phim</label>
+				<input type="text" 
+				name="search" 
+				class="form-control" 
+				id="search" 
+				autocomplete='off'>		
+	</div>
+	<hr>
+	<!--Form them suat chieu-->
+	<div class="container-fluid" style="background-color:">
+		<div class="row">	
+			<div class="col-12" style="background:">
+			<form action="../add" method="post" class="d-inline-flex">
+
+				<!-- <label class="">Chọn phim</label> -->
+				<select name='idFilm' class="idFilm form-control col-3">
+					<option value="0">Select film</option>
+					<% films.forEach(item => { %>
+					<option value="<%- item.id %>"><%- item.name %></option>
+					<% }) %>
+				</select>
+				<!-- <label>Chọn ngày</label> -->
+				<select class="form-control col-3" name='idSchedule' id='day'>
+
+					<option class="days" id=-1 value="">Select date</option>
+					<option class="days" id= 0 value="">Sunday</option>
+					<option class="days" id= 1 value="">Monday</option>
+					<option class="days" id= 2 value="">Tuesday</option>
+					<option class="days" id= 3 value="">Wednesday</option>
+					<option class="days" id= 4 value="">Thursday</option>
+					<option class="days" id= 5 value="">Friday</option>
+					<option class="days" id= 6 value="">Saturday</option>
+				</select>
+				<!-- <label>Thời gian bắt đầu</label> -->
+				<input type="text" id='timestart' autocomplete="off" name="start" class="form-control col-3">
+				<!--end time-->
+				<input type="text" id='endtime' autocomplete="off" name="end" class="form-control col-3 d-none">
+				
+				<!-- <label>Chọn Phòng</label> -->
+				<select name="idRoom" class="form-control col-3">
+					<option value="0">Select room</option>
+					<option class="rooms" value="1">Cinema1</option>
+					<option class="rooms" value="2">Cinema2</option>
+					<option class="rooms" value="3">Cinema3</option>
+					<option class="rooms" value="4">Cinema4</option>
+					<option class="rooms" value="5">Cinema5</option>
+				</select>
+				<br>
+				<button class="btn btn-primary btn-block">Sumit</button>
+			</form>	
+			<div class="table row" id='tbHidden'>
+				<div class="table1">
+					<table>
+						<tr>
+							<td class="houres" onclick="getHoure(7)" value='7'>07</td>
+							<td class="houres" onclick="getHoure(8)" value="08">08</td>
+							<td class="houres" onclick="getHoure(9)" value="09">09</td>
+							<td class="houres" onclick="getHoure(10)" value="10">10</td>
+							<td class="houres" onclick="getHoure(11)" value="11">11</td>
+							<td class="houres" onclick="getHoure(12)" value="12">12</td>
+						</tr>
+						<tr>
+							<td class="houres" onclick="getHoure(13)" value="13">13</td>
+							<td class="houres" onclick="getHoure(14)" value="14">14</td>
+							<td class="houres" onclick="getHoure(15)" value="15">15</td>
+							<td class="houres" onclick="getHoure(16)" value="16">16</td>
+							<td class="houres" onclick="getHoure(17)" value="17">17</td>
+							<td class="houres" onclick="getHoure(18)" value="18">18</td>
+						</tr>
+						<tr>
+							<td class="houres" onclick="getHoure(19)" value="19">19</td>
+							<td class="houres" onclick="getHoure(20)" value="20">20</td>
+							<td class="houres" onclick="getHoure(21)" value="21">21</td>
+							<td class="houres" onclick="getHoure(22)" value="22">22</td>
+							<td class="houres" onclick="getHoure(23)" value="23">23</td>
+							<td class="houres" onclick="getHoure(0)" value="00">00</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table2">
+					<table>
+						<tr>
+							<td class="minutes" onclick="getMinute(5)" value="05">05</td>
+							<td class="minutes" onclick="getMinute(10)" value="10">10</td>
+							<td class="minutes" onclick="getMinute(15)" value="15">15</td>
+							<td class="minutes" onclick="getMinute(20)" value="20">20</td>
+						</tr>
+						<tr>
+							<td class="minutes" onclick="getMinute(25)" value="25">25</td>
+							<td class="minutes" onclick="getMinute(30)" value="30">30</td>
+							<td class="minutes" onclick="getMinute(35)" value="35">35</td>
+							<td class="minutes" onclick="getMinute(40)" value="40">40</td>
+						</tr>
+							<td class="minutes" onclick="getMinute(45)" value="45">45</td>
+							<td class="minutes" onclick="getMinute(50)" value="50">50</td>
+							<td class="minutes" onclick="getMinute(55)" value="55">55</td>
+							<td class="minutes" onclick="getMinute(60)" value="60">60</td>
+						</tr>
+						
+					</table>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--End form them suat chieu-->
+	<hr>
+
 	<div class="container-fluid"style="background: ">
 		<div class="head">
-			<div class="text-right mr-4" style="background-color: ">
-
-				<input type="text" style="border: 0px;font-size: 30px" class="schedule" id='schedule' name="" value="">
+			<div class="text-right d-flex" style="background-color: ">
+				<label class="row col-9" style="font-size: 30px">Lịch chiếu</label>
+				<input type="text" style="border: 0px;font-size: 30px" class="schedule col-3" id='schedule' name="" value="">
 
 			</div>
 
@@ -29,101 +166,34 @@
 					<div class="nav nav-tabs" id="nav-tab" role="tablist">
 						<!--id="nav-home-tab"-->
 						<% days.forEach((item,index) => { %>				
+							<% if(item.active == 1) { %>	
 
-						<a class="nav-item nav-link thu" id='<%- index %>'  data-toggle="tab" href="#<%- item %>" role="tab" aria-controls="nav-home" aria-selected="true"><%- item %> 
-						</a>
+							<a class="nav-item nav-link thu active" id='<%- index %>'  data-toggle="tab" href="#<%- item.day %>" role="tab" aria-controls="nav-home" aria-selected="true"><%- item.day %>
+							</a>
+							<% } else { %>
+							<a class="nav-item nav-link thu" id='<%- index %>'  data-toggle="tab" href="#<%- item.day %>" role="tab" aria-controls="nav-home" aria-selected="true"><%- 	item.day %>
+							</a>									
+							<% } %>
 
 						<% }) %>		
-					<!-- <a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Tuesday" role="tab" aria-controls="nav-profile" aria-selected="false">Tuesday</a>
 					
-					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Wednesday" role="tab" aria-controls="nav-profile" aria-selected="false">Wednesday</a>
-					
-					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Thursday" role="tab" aria-controls="nav-profile" aria-selected="false">Thursday</a>
-
-					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Friday" role="tab" aria-controls="nav-profile" aria-selected="false">Friday</a>
-
-					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Saturday" role="tab" aria-controls="nav-profile" aria-selected="false">Saturday</a>
-
-					<a class="nav-item nav-link thu" id="nav-profile-tab" data-toggle="tab" href="#nav-Sunday" role="tab" aria-controls="nav-profile" aria-selected="false">Sunday</a>
-					
-				-->
+					</div>
+				</nav>
 			</div>
-			</nav>
-			<div class="tab-content" style="padding: 20px" id="nav-tabContent">
-			<% days.forEach(item => { %>	
-			<div class="tab-pane fade show nd " id="<%- item %>" role="tabpanel" aria-labelledby="nav-home-tab">
-				<%- item %>
-			</div>
-			<% }) %>
 			
-
-				<!-- <div class="tab-pane fade" id="nav-Tuesday" role="tabpanel" aria-labelledby="nav-profile-tab">
-					TuesDay
+			<div class="tab-content" style="padding: 20px" id="nav-tabContent">
+		
+				<% days.forEach(item => { %>
+					
+				<div class="tab-pane fade show" id="<%- item.day %>" role="tabpanel" aria-labelledby="nav-home-tab">
+					<!-- <%- item.day %> -->
 				</div>
-				<div class="tab-pane fade" id="nav-Wednesday" role="tabpanel" aria-labelledby="nav-contact-tab">
-					Wednesday
-				</div>
-				<div class="tab-pane fade" id="nav-Thursday" role="tabpanel" aria-labelledby="nav-contact-tab">
-					Thursday
-				</div>
-				<div class="tab-pane fade" id="nav-Friday" role="tabpanel" aria-labelledby="nav-contact-tab">
-					Friday
-				</div>
-				<div class="tab-pane fade" id="nav-Sat	urday" role="tabpanel" aria-labelledby="nav-contact-tab">
-					Saturday
-				</div>
-				<div class="tab-pane fade" id="nav-Sunday" role="tabpanel" aria-labelledby="nav-contact-tab">
-					Sunday
-				</div> -->
-				
-				<!-- </div> -->
-			</div>
-			</div>
-		</div>	
-		<br>
-		<hr>
-	<div class="container-fluid">
-		<div class="col-5"  style="background:">
-			<form action="add" method="post">
-				<label>Tim Phim</label>
-				<input type="text" 
-				name="search" 
-				class="form-control" 
-				id="search" 
-				autocomplete='off'>
-
-				<label>Chọn phim</label>
-				<select name='name' class="form-control">
-					<option value="0">Select film</option>
-					<% films.forEach(item => { %>
-					<option value="<%- item.id %>"><%- item.name %></option>
-					<% }) %>
-				</select>
-			<!-- <div id='showSearch' class="form-control"></div> -->
-
-			<label>Chọn ngày</label>
-			<select class="form-control" name='day' id='day'>
-
-					<option class="days" id=-1 value="">Select</option>
-					<option class="days" id= 1 value="">Monday</option>
-					<option class="days" id= 2 value="">Tuesday</option>
-					<option class="days" id= 3 value="">Wednesday</option>
-					<option class="days" id= 4 value="">Thursday</option>
-					<option class="days" id= 5 value="">Friday</option>
-					<option class="days" id= 6 value="">Saturday</option>
-					<option class="days" id= 0 value="">Sunday</option>
-				</select>
-				<label>Chọn Phòng</label>
-				<select name="room" class="form-control">
-					<option value="0">Phong 1</option>
-				</select>
-				<label>Thời gian bắt đầu</label>
-				<input type="text" id='timestart' name="timestart" class="form-control">
-				<br>
-				<button class="btn btn-primary btn-block">Sumit</button>
-			</form>	
+				<% }) %>
+				<div id='noidung'></div>
+			</div>	
 		</div>
 	</div>
+
 </div> <!--end content-->
 
 <!-- <script type="text/javascript">
@@ -145,7 +215,40 @@
 </script> -->
 
 <script type="text/javascript">
-	
+
+
+	let today = new Date().getDay()
+	//let today = 
+	let days =[]
+
+	if (today == 0 || today == 1){		
+		$.ajax({
+			url:'../setDay/',
+			method:'post',
+			data: {thday:today}
+		}).done(function(req,res){
+			localStorage.removeItem('days')
+			for (let i = 0;i <= 6; i++){
+				localStorage.setItem('days',JSON.stringify(req))
+			}
+		})
+	}
+	$(document).ready(function(){
+		let val = JSON.parse(localStorage.getItem('days'))
+
+		for(let i=1; i<=7; i++){
+			let day = val[i-1].day < 10 ? '0'+val[i-1].day : val[i-1].day
+			let month = val[i-1].month < 10 ? '0'+val[i-1].month : val[i-1].month
+			let year = val[i-1].year
+			$('.days')[i].value = day+'/'+month+'/'+year
+				//console.log($('.days')[i])
+		}
+		$('.days').each(function(index,attribute){
+			if ($(this)[0].id < today)
+				$(this).css('display','none')
+			})
+		$('.days')[1].style.display = 'block'
+	})
 	// Show danh sach phim
 	// Autocomplete
 	$(function(){
@@ -154,7 +257,7 @@
 			var name = $('#search').val();
 
 			$.ajax({
-				url: 'search',
+				url: '../search',
 				method:'post',
 				//data: {name:name}
 				//res : success
@@ -167,102 +270,45 @@
 			})
 		})
 	})
-	// A day of week
-	$(function(){
-		$(document).ready(function(){
-			$.ajax({
-				url: 'getday',
-				method:'post',
-				//data: {current_day:current_day}
-			}).done(function(req,res){
-				let newDays = req.days.reverse()
-				$('.days').each(function(index,attribute){
-					//console.log(index,attribute.value)
-					//$('.days').css('display','none')
-					if (attribute.id !== '-1')
 
-						if (req.day == 0){
-							$(this).css('display','none')
-
-							let newValue = ''
-							newValue += newDays[0].day
-							newValue += '/' + newDays[0].month
-							newValue += '/' + newDays[0].year
-							$(this).val(newValue)
-							console.log($(this).val())
-							$('#0').css('display','block')
-
-							return
-						}
-
-						if (req.day > attribute.id & attribute.id != 0){
-							//$('.days')[0].css('display','none')
-							$(this).css('display','none')
-							//$(this).css('display','block')
-						} else {
-							let newValue = ''
-							newValue += newDays[7 - index].day
-							newValue += '/' + newDays[7 - index].month
-							newValue += '/' + newDays[7 - index].year
-							$(this).val(newValue)
-							//console.log($(this).val())
-
-							//console.log(newDays[7 - index])
-							// console.log(req.days.reverse()[0])
-						}
-						//$('#0').css('display','block')
-
-					})
-				//console.log(req.days.reverse()[])
-				//console.log(req.days)
-
-			})
-		})
-	})
-	//Set Active && dayOfWeeks
 	$(document).ready(function(){
-		//const theDay = new Date().getDay()
-		$.ajax({
-			url:'setActive',
-			method:'post',
-		}).done(function(req,res){
-			console.log(req.actives)
-			req.actives.forEach((item,index) => {
-				if (item != 0){
-					//console.log(index)
-					$('.thu')[index].classList.add('active')
-					$('.nd')[index].classList.add('active')
-					// let dayOfWeeks = req.dayOfWeeks
-					// let active_day = dayOfWeeks[index].day
-					// let active_month = dayOfWeeks[index].month
-					// let active_year = dayOfWeeks[index].year
-					// console.log(active_day)
-
-					$('.thu').on('click',function(){
-						//console.log($(this)[0].id)
-						let position = $(this)[0].id
-						let dayOfWeeks = req.dayOfWeeks
-						let day = dayOfWeeks[position].day
-						let month = dayOfWeeks[position].month
-						let year = dayOfWeeks[position].year
-						let scheduleValue = day + '/' + month + '/' + year
-						$('#schedule').val(scheduleValue)
-						console.log(scheduleValue)
-
-					})
-					console.log(req.dayOfWeeks)
-					
-				}
+		let days = JSON.parse(localStorage.getItem('days'))
+		console.log(days)
+		$('.thu').on('click',function(){
+			//console.log(days[$(this)[0].id])
+			let po = $(this)[0].id
+			let day = days[po].day
+			if (day<10){
+				day = '0'+day
+			}
+			let month = days[po].month
+			if (month<10){
+				month = '0'+month
+			}
+			let year = days[po].year
+			let val = day+'/'+ month+'/'+year 
+			$('#schedule').val(val)
+			//console.log($('#schedule').val())
+			$.ajax({
+				url:'http://localhost:3000/content/?date='+val,
+				method:'get'
+			}).done(function(req,res){
+				$('#noidung').html(req)
 			})
-			
-
 		})
 	})
-	// Schedule
+	
+	// // Schedule
 	$(document).ready(function(){
 		let now = new Date()
 		let day = now.getDate() 
+		if (day<10){
+			day = '0'+day
+		}
 		let month = now.getMonth()+1
+		if (month<10){
+			month = '0'+month
+		}
 		let year =now.getFullYear()
 
 		const schedule_today = day + '/' + month + '/' + year
@@ -285,12 +331,81 @@
 
 		
 		$('#schedule').val(schedule_today)
-	})
 
-	$(document).ready(function(){
-		//console.log($('#schedule')[0].value)
+		$.ajax({
+			url:'http://localhost:3000/content/?date='+schedule_today,
+			method:'get'
+		}).done(function(req,res){
+			$('#noidung').html(req)
+		})
 	})
-	
+	// // A day of week (Select)
+	// $(function(){
+	// 	$(document).ready(function(){
+	// 		$.ajax({
+	// 			url: '../setActive',
+	// 			method:'post',
+	// 			//data: {current_day:current_day}
+	// 		}).done(function(req,res){
+	// 			// Neu theDay khong phai la chu nhat
+	// 			if (req.theDay != 0){
+	// 				// Neu la thu i thi show cac ngay tu i tro len
+	// 				$('.days').css('display','none')
+	// 				let theDay = req.theDay
+	// 				let dayOfWeeks = req.dayOfWeeks
+	// 				$('.days').each(function(index,attribute){
+	// 					//console.log($(this)[0])
+	// 					if ($(this)[0].id != -1){
+	// 						if (theDay <= $(this)[0].id){
+	// 							//console.log($(this)[0])
+	// 							let day = dayOfWeeks[$(this)[0].id].day
+	// 							let month = dayOfWeeks[$(this)[0].id].month
+	// 							let year = dayOfWeeks[$(this)[0].id].year
+	// 							let dayValue = day + '/' + month + '/' + year
+	// 							$(this).val(dayValue)
+	// 							$(this).css('display','block')
+	// 							//console.log($(this)[0])
+	// 						} 							
+
+	// 					} 
+						
+	// 				})
+	// 				// Show ngay chu nhat
+	// 				$('.days')[1].style.display='block'
+	// 				let day = dayOfWeeks[0].day
+	// 				let month = dayOfWeeks[0].month
+	// 				let year = dayOfWeeks[0].year
+	// 				let dayValue = day + '/' + month + '/' + year
+	// 				$('.days')[1].value = dayValue
+					
+	// 			} else {
+	// 				let dayOfWeeks = req.dayOfWeeks
+	// 				$('.days').each(function(index,attribute){
+	// 					if ($(this)[0].id != -1){
+	// 						if ($(this)[0].id != 0){
+	// 							let day = dayOfWeeks[$(this)[0].id].day
+	// 							let month = dayOfWeeks[$(this)[0].id].month
+	// 							let year = dayOfWeeks[$(this)[0].id].year
+	// 							let dayValue = day + '/' + month + '/' + year
+	// 							$(this).val(dayValue)
+	// 							//console.log($(this)[0])
+	// 						} else {
+	// 							let day = dayOfWeeks[0].day
+	// 							let month = dayOfWeeks[0].month
+	// 							let year = dayOfWeeks[0].year
+	// 							let dayValue = day + '/' + month + '/' + year
+	// 							$(this).val(dayValue)
+	// 							//console.log($(this)[0])
+	// 						}
+
+	// 					}
+	// 				})
+	// 			}
+	// 			//let newDays = req.days.reverse()
+
+	// 		})
+	// 	})
+	// })
 	$(document).ready(function(){
 		$('#schedule').datepicker({
             //showAnim: 'drop',
@@ -302,17 +417,65 @@
         })
 
 	})
-	$('#timestart').timepicker({
-		timeFormat: 'h:mm p',
-		interval: 60,
-		minTime: '00',
-		maxTime: '6:00pm',
-		defaultTime: '00',
-		startTime: '10:00',
-		dynamic: false,
-		dropdown: true,
-		scrollbar: true
-	});
 
+	$('#timestart').on('click',function(){
+		$('#tbHidden').css('visibility','visible')
+	})
+	
+	function getHoure(value){
+		if (value < 10){
+			value = '0'+value
+		}
+		$('#timestart').val(value)
+		//console.log(value)
+	}
+	
+	function getMinute(id){
+		if(id<10){
+			id = '0'+id
+		}
+		const oldValue = $('#timestart')[0].value
+		$('#timestart').val(oldValue+':'+id)
+		$('#tbHidden').css('visibility','hidden')
+		
+		let date = $('#day')[0].value
+		let value = $('#timestart')[0].value
+		let idFilm = $('.idFilm')[0].value
+		
+		$.ajax({
+			url:'../timestart',
+			method:'post',
+			data:{start:value,idFilm:idFilm,date:date}
+		}).done(function(req,res){			
+			//console.log('ok')
+			 let idRooms = req.idRooms
+			$('.rooms').css('display','none')
+			idRooms.forEach(item=>{
+				$('.rooms').each(function(index,attribute){
+					//console.log(attribute.value)
+					if (item == attribute.value)
+						$(this).css('display','block')
+				})
+			})
+
+			// // $('.rooms').each(function(index,attribute){
+				
+			// // })
+			// // truyen gia tri cho end time
+			// $('#endtime')[0].value = req.end
+			// //console.log($('#endtime')[0].value)
+			$('#endtime')[0].value = req.end
+			
+		})
+
+	}
+	// Show message
+	$(document).ready(function(){
+    	setTimeout(function(){ 
+        	$('#showMessage').hide()
+        }, 3000);
+    })
+
+   
 	
 </script>

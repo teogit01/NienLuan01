@@ -1,0 +1,43 @@
+<div class="noidung" id='noidung'>
+					<% if (showtimes.length !== 0){ %>
+					
+					<% idFilms.forEach((index)=> {%>
+					
+						<div>
+							<p style="font-weight:bold">
+								<%- filmOfShows[index-1].showtime[index-1].film.name%></p>
+						</div>
+						
+
+					
+							<!-- <div>IDFilm <%- filmOfShows[index-1].idFilm %></div> -->
+							<div class="row w-10" style="text-align: center;">
+								
+								<% filmOfShows[index-1].showtime.forEach(show=> {%>
+									<div class="form-control" style="width: 20%">
+										<%- show.start %> -
+										<%- show.end %>
+									</div>
+									<div class="form-control" style="width: 20%">
+										<%- show.start %> -
+										<%- show.end %>
+									</div>
+									<div class="form-control" style="width: 20%">
+										<%- show.start %> -
+										<%- show.end %>
+									</div>
+									<div class="form-control" style="width: 20%">
+										<%- show.start %> -
+										<%- show.end %>
+									</div>
+									<div class="form-control" style="width: 20%">
+										<%- show.start %> -
+										<%- show.end %>
+									</div>					
+								<% }) %>									
+							</div>
+
+						<hr>
+					<% }) %>
+					<% } %>
+				</div>

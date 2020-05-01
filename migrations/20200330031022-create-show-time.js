@@ -14,10 +14,10 @@ module.exports = {
       end: {
         type: Sequelize.STRING
       },
-      idFilm: {
-        type: Sequelize.INTEGER
+      date: {
+        type: Sequelize.STRING
       },
-      idSchedule: {
+      idFilm: {
         type: Sequelize.INTEGER
       },
       idRoom: {

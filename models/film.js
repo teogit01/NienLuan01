@@ -18,8 +18,9 @@
 //   };
 //   return Film;
 // };
-import Sequelize from 'sequelize';
-import { sequelize } from '../databases/database';
+import Sequelize from 'sequelize'
+import { sequelize } from '../databases/database'
+import ShowTimes from './showtime'
 const Films = sequelize.define('Films',{
   id:{
     type: Sequelize.INTEGER,
@@ -61,4 +62,6 @@ const Films = sequelize.define('Films',{
 },{
   timestamps: true,
 });
+Films.hasMany(ShowTimes,{ foreignKey:'idFilm', sourceKey:'id', as:'showtime' })
+ShowTimes.belongsTo(Films,{ foreignKey:'idFilm', sourceKey:'id',as:'film'})
 export default Films

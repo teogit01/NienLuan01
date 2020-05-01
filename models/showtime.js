@@ -23,10 +23,10 @@ const ShowTimes = sequelize.define('ShowTimes',{
   end:{
     type: Sequelize.STRING
   },
-  idFilm:{
-    type: Sequelize.INTEGER
+  date:{
+    type: Sequelize.STRING
   },
-  idShedule:{
+  idFilm:{
     type: Sequelize.INTEGER
   },
   idRoom:{
